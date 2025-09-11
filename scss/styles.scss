@@ -538,7 +538,6 @@ footer {
 .vtimeline-point {
     position: relative;
     display: block;
-    vertical-align: top;
     margin-bottom: 30px;
 }
 
@@ -917,6 +916,11 @@ footer {
         height: 100%;
     }
 
+    // Ensure header shows when activated by JS on small screens
+    header.active {
+        display: block;
+    }
+
     #mobile-menu-open, #mobile-menu-close {
         display: block;
     }
@@ -932,6 +936,22 @@ footer {
             display: block;
             margin-bottom: 10px;
         }
+    }
+
+    // Override fixed horizontal menu to become vertical and not cover close button
+    .fixed-menu {
+        position: static;
+        z-index: auto;
+        background: $background;
+        padding: 10px 0;
+        margin: 0;
+        display: block; // vertical stack via li block display above
+    }
+
+    // Keep close button clickable above menu
+    #mobile-menu-close {
+        position: relative;
+        z-index: 1001;
     }
 
     #lead-content {

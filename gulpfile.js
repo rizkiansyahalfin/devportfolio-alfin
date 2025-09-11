@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 const uglify = require('gulp-uglify');
-const sass = require('gulp-sass');
+const dartSass = require('sass');
+const gulpSass = require('gulp-sass')(dartSass);
 const wait = require('gulp-wait');
-const babel = require('gulp-babel');;
+const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 
 gulp.task('scripts', function() {
@@ -29,7 +30,7 @@ gulp.task('scripts', function() {
 gulp.task('styles', function () {
     return gulp.src('./scss/styles.scss')
         .pipe(wait(250))
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(gulpSass({outputStyle: 'compressed'}).on('error', gulpSass.logError))
         .pipe(gulp.dest('./css'));
 });
 

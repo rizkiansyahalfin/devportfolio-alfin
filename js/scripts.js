@@ -79,14 +79,23 @@
 
     });
 
-    // Open mobile menu
+    // Open/Close mobile menu (toggle)
     $('#mobile-menu-open').click(function() {
-        $('header, body').addClass('active');
+        $('header, body').toggleClass('active');
     });
 
     // Close mobile menu
     $('#mobile-menu-close').click(function() {
         $('header, body').removeClass('active');
+    });
+
+    // Close menu on Escape key
+    $(document).on('keyup', function(e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            if ($('header').hasClass('active')) {
+                $('header, body').removeClass('active');
+            }
+        }
     });
 
     // Load additional projects
